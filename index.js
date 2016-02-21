@@ -9,9 +9,9 @@ watcher.start([16, 18], function (pin, oldValue, newValue) {
 
 		if (newValue == 0) {
 			if (pin === 16) {
-				player.play('lowrider.mp3');
+				player.play(__dirname + '/lowrider.mp3');
 			} else if (pin === 18) {
-				player.play('higher.mp3');
+				player.play(__dirname + '/higher.mp3');
 			}
 		} else {
 			player.stop();
