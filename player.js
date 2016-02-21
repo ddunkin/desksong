@@ -13,17 +13,22 @@ let audioOptions = {
 let speaker;
 
 function play(path) {
+	if (speaker) {
+		return;
+	}
 	let stream = fs.createReadStream(path);
 	let decoder = new lame.Decoder();
+	speaker = new Speaker(audioOptions);
 	return stream.pipe(decoder).once('format', function() {
-		speaker = new Speaker(audioOptions);
 		decoder.pipe(speaker);
 	});
 }
 
 function stop() {
-	speaker.end();
-	speaker = undefined;
+	if (speaker) {
+		speaker.end();
+		speaker = undefined;
+	}
 }
 
 module.exports = {
