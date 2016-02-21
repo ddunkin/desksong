@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "setup": "gpio-admin export 23 pullup && gpio-admin export 24 pullup"
   },
   "author": "me@davedunkin.com",
   "license": "ISC",
   "dependencies": {
-    "pi-gpio": "0.0.8"
+    "lame": "1.2.3",
+    "pi-gpio": "0.0.8",
+    "speaker": "0.2.6"
   }
 }
